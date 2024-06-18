@@ -1,4 +1,6 @@
+import About from "../About/About";
 import Banner from "../Banner/Banner";
+import Benefit from "../Benefit/Benefit";
 import ElectronicsFamous from "../Famous/Electronics";
 import FoodFamous from "../Famous/FoodFamous";
 import SportsFamous from "../Famous/SportsFamous";
@@ -17,6 +19,8 @@ const Home = () => {
         <PopularItem />
         <HoldBg />
         <Featured />
+        <About />
+        <Benefit />
       </div>
     </div>
   );
