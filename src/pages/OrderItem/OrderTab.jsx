@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-import AllProductDataShow from "../AllProducts/AllProductDataShow";
+import OrderItem from "../../components/OrderItem/OrderItem";
 
 // TODO: implement pagination here on this page
 const OrderTab = ({ items }) => {
@@ -14,7 +14,7 @@ const OrderTab = ({ items }) => {
     },
   };
   return (
-    <div>
+    <div className="w-5/6 mx-auto my-10">
       <Swiper
         pagination={pagination}
         modules={[Pagination]}
@@ -23,10 +23,7 @@ const OrderTab = ({ items }) => {
         <SwiperSlide>
           <div className="grid md:grid-cols-3 gap-10">
             {items.map((item) => (
-              <AllProductDataShow
-                key={item._id}
-                allProduct={item}
-              ></AllProductDataShow>
+              <OrderItem key={item._id} item={item}></OrderItem>
             ))}
           </div>
         </SwiperSlide>
