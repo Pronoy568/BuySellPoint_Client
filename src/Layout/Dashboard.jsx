@@ -1,16 +1,9 @@
-import {
-  FaArrowAltCircleLeft,
-  FaCalendarAlt,
-  FaHome,
-  FaUser,
-  FaWallet,
-  FaHourglassStart,
-} from "react-icons/fa";
+import { FaArrowAltCircleLeft, FaHome, FaUser, FaWallet } from "react-icons/fa";
 import { FcManager } from "react-icons/fc";
 import { HiCash } from "react-icons/hi";
 import { RiFileAddFill, RiLuggageCartLine } from "react-icons/ri";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
-import { AiOutlineLogout } from "react-icons/ai";
+import { AiOutlineLogout, AiOutlineFileDone } from "react-icons/ai";
 import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAdmin from "../hooks/useAdmin";
@@ -86,13 +79,13 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/selectedClass">
-                  <FaCalendarAlt></FaCalendarAlt> Selected Class
+                <NavLink to="/dashboard/myCart">
+                  <RiLuggageCartLine /> My Cart
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/enrolledClass">
-                  <FaHourglassStart></FaHourglassStart> Enrolled Class
+                <NavLink to="/dashboard/buyItem">
+                  <AiOutlineFileDone /> Buy Item
                 </NavLink>
               </li>
               <li>

@@ -15,6 +15,13 @@ import SellerRoute from "./SellerRoute";
 import AddItem from "../DashboardPages/Seller/AddItem/AddItem";
 import MyItem from "../DashboardPages/Seller/MyItem/MyItem";
 import SellerHome from "./../DashboardPages/Seller/SellerHome/SellerHome";
+import AdminHome from "../DashboardPages/Admin/AdminHome/AdminHome";
+import ManageItem from "./../DashboardPages/Admin/ManageItem/ManageItem";
+import ManageUser from "../DashboardPages/Admin/ManageUser/ManageUser";
+import UserHome from "../DashboardPages/User/UserHome/UserHome";
+import MyCart from "../DashboardPages/User/MyCart/MyCart";
+import BuyItem from "../DashboardPages/User/BuyItem/BuyItem";
+import PaymentHistory from "../DashboardPages/User/PaymentHistory/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -62,7 +69,31 @@ export const router = createBrowserRouter([
         path: "userHome",
         element: (
           <UserRoute>
-            <h1>User Home</h1>
+            <UserHome></UserHome>
+          </UserRoute>
+        ),
+      },
+      {
+        path: "myCart",
+        element: (
+          <UserRoute>
+            <MyCart></MyCart>
+          </UserRoute>
+        ),
+      },
+      {
+        path: "buyItem",
+        element: (
+          <UserRoute>
+            <BuyItem></BuyItem>
+          </UserRoute>
+        ),
+      },
+      {
+        path: "paymentHistory",
+        element: (
+          <UserRoute>
+            <PaymentHistory></PaymentHistory>
           </UserRoute>
         ),
       },
@@ -71,7 +102,23 @@ export const router = createBrowserRouter([
         path: "adminHome",
         element: (
           <AdminRoute>
-            <h1>Admin home</h1>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageItem",
+        element: (
+          <AdminRoute>
+            <ManageItem></ManageItem>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageUser",
+        element: (
+          <AdminRoute>
+            <ManageUser></ManageUser>
           </AdminRoute>
         ),
       },
