@@ -5,6 +5,7 @@ import { useState } from "react";
 import useAuth from "./../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import Google from "../Google/Google";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -107,6 +108,7 @@ const Login = () => {
                 />
               </div>
             </form>
+            <Google />
           </div>
         </motion.div>
       </div>
