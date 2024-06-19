@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import useAuth from "./../../../hooks/useAuth";
+import useAdmin from "../../../hooks/useAdmin";
+import useSeller from "../../../hooks/useSeller";
+import unknown from "../../../assets/unknown/unknown.jpg";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
@@ -10,6 +13,9 @@ const NavBar = () => {
         console.log(error);
       });
   };
+
+  const [isAdmin] = useAdmin();
+  const [isSeller] = useSeller();
 
   const navOptions = (
     <>
@@ -22,8 +28,60 @@ const NavBar = () => {
       <li>
         <Link to="/order/Sports">Order Item</Link>
       </li>
+      <li>
+        <Link
+          to={
+            isAdmin
+              ? "/dashboard/adminHome"
+              : isSeller
+              ? "/dashboard/sellerHome"
+              : "/dashboard/userHome"
+          }
+        >
+          Dashboard
+        </Link>
+      </li>
       {user?.email ? (
         <>
+          <Link
+            to={
+              isAdmin
+                ? "/dashboard/adminHome"
+                : isSeller
+                ? "/dashboard/sellerHome"
+                : "/dashboard/userHome"
+            }
+            className="mx-5"
+          >
+            {user?.photoURL ? (
+              <>
+                <div
+                  className="tooltip tooltip-bottom"
+                  data-tip={user?.displayName}
+                >
+                  <img
+                    className="w-10 rounded-xl"
+                    src={user?.photoURL}
+                    alt={user?.email}
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <div
+                  className="tooltip tooltip-bottom"
+                  data-tip={user?.displayName}
+                >
+                  <img
+                    className="w-10 rounded-xl"
+                    src={unknown}
+                    alt={user?.email}
+                  />
+                </div>
+              </>
+            )}
+          </Link>
+
           <li>
             <button onClick={handleLogOut} className="rounded">
               Logout
