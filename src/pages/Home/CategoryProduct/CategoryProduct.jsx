@@ -29,7 +29,7 @@ const CategoryProduct = () => {
   }, [url]);
 
   return (
-    <section className="w-4/5 mx-auto text-center my-10">
+    <section className="w-5/6 mx-auto text-center my-10">
       <h1 className="mb-10 text-5xl font-bold underline text-gray-600 decoration-gray-200 decoration-wavy underline-offset-8">
         Product By Category
       </h1>
