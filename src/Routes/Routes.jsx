@@ -6,11 +6,21 @@ import SingleProduct from "../pages/SingleProduct/SingleProduct";
 import OrderItem from "../pages/OrderItem/OrderItem";
 import Login from "../pages/Auth/Login/Login";
 import Registration from "../pages/Auth/Registration/Registration";
+import NotFound from "../pages/Shared/NotFound/NotFound";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Layout/Dashboard";
+import UserRoute from "./UserRoute";
+import AdminRoute from "./AdminRoute";
+import SellerRoute from "./SellerRoute";
+import AddItem from "../DashboardPages/Seller/AddItem/AddItem";
+import MyItem from "../DashboardPages/Seller/MyItem/MyItem";
+import SellerHome from "./../DashboardPages/Seller/SellerHome/SellerHome";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: "/",
@@ -37,6 +47,58 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Registration></Registration>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "userHome",
+        element: (
+          <UserRoute>
+            <h1>User Home</h1>
+          </UserRoute>
+        ),
+      },
+      // admin routes
+      {
+        path: "adminHome",
+        element: (
+          <AdminRoute>
+            <h1>Admin home</h1>
+          </AdminRoute>
+        ),
+      },
+      // seller routes
+      {
+        path: "sellerHome",
+        element: (
+          <SellerRoute>
+            <SellerHome></SellerHome>
+          </SellerRoute>
+        ),
+      },
+      {
+        path: "addItem",
+        element: (
+          <SellerRoute>
+            <AddItem></AddItem>
+          </SellerRoute>
+        ),
+      },
+      {
+        path: "myItem",
+        element: (
+          <SellerRoute>
+            <MyItem></MyItem>
+          </SellerRoute>
+        ),
       },
     ],
   },
