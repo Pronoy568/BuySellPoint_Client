@@ -1,8 +1,47 @@
 import img from "../../../assets/auth/login.jpg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import useAuth from "./../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+  const [error, setError] = useState("");
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const from = location.state?.from?.pathname || "/";
+
+  const handleLogin = (data) => {
+    console.log("Login data:", data);
+    signIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setError("");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login SuccessFully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        reset();
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
+
   return (
     <div className="bg-base-300 hero min-h-screen pt-28">
       <div className="hero-content flex-col lg:flex-row">
@@ -22,7 +61,7 @@ const Login = () => {
         >
           <div className="card-body">
             <h1 className="text-3xl text-center font-bold">Login</h1>
-            <form>
+            <form onSubmit={handleSubmit(handleLogin)}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -32,8 +71,11 @@ const Login = () => {
                   placeholder="email"
                   className="input input-bordered"
                   name="email"
-                  required
+                  {...register("email", { required: true })}
                 />
+                {errors.email?.type === "required" && (
+                  <span className="text-red-600">Email is required</span>
+                )}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -44,8 +86,12 @@ const Login = () => {
                   placeholder="password"
                   className="input input-bordered"
                   name="password"
-                  required
+                  {...register("password", { required: true })}
                 />
+                {errors.password?.type === "required" && (
+                  <p className="text-red-600">Password is required</p>
+                )}
+                {error && <p className="text-red-600">{error}</p>}
                 <p className="text-center my-3">
                   New to user ?{" "}
                   <Link className="text-orange-600 font-bold" to="/register">
