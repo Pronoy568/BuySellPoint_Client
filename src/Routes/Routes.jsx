@@ -22,6 +22,7 @@ import UserHome from "../DashboardPages/User/UserHome/UserHome";
 import MyCart from "../DashboardPages/User/MyCart/MyCart";
 import BuyItem from "../DashboardPages/User/BuyItem/BuyItem";
 import PaymentHistory from "../DashboardPages/User/PaymentHistory/PaymentHistory";
+import CashOrCard from "../DashboardPages/User/PaymentHistory/CashOrCard";
 
 export const router = createBrowserRouter([
   {
@@ -78,6 +79,14 @@ export const router = createBrowserRouter([
         element: (
           <UserRoute>
             <MyCart></MyCart>
+          </UserRoute>
+        ),
+      },
+      {
+        path: "cashOrCard",
+        element: (
+          <UserRoute>
+            <CashOrCard></CashOrCard>
           </UserRoute>
         ),
       },
