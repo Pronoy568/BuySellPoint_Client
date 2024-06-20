@@ -16,14 +16,14 @@ const Home = () => {
       <Banner></Banner>
       <div className="max-w-screen-xl mx-auto">
         <Types />
-        <CategoryProduct />
         <SportsFamous />
         <FoodFamous />
         <ElectronicsFamous />
+        <CategoryProduct />
         <PopularItem />
         <HoldBg />
-        <Featured />
         <About />
+        <Featured />
         <Benefit />
       </div>
     </div>

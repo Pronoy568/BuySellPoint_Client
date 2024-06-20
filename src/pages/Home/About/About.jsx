@@ -1,7 +1,7 @@
 import useScrollGrow from "../../../components/useScrollGrow/useScrollGrow";
 import { motion } from "framer-motion";
-import image1 from "../../../assets/Banner/meal4.jpg";
-import image2 from "../../../assets/Banner/meal1.jpg";
+import image1 from "../../../assets/product/product (7).jpg";
+import image2 from "../../../assets/product/product (12).jpg";
 
 const About = () => {
   const { style, componentRef } = useScrollGrow();

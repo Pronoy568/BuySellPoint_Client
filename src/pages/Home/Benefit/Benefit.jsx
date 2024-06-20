@@ -1,4 +1,4 @@
-import image from "../../../assets/Banner/meal4.jpg";
+import image from "../../../assets/product/product (13).jpg";
 
 const Benefit = () => {
   return (

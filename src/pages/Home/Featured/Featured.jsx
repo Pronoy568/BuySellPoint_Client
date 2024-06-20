@@ -1,4 +1,4 @@
-import featuredImg from "../../../assets/Banner/cricket1.jpg";
+import featuredImg from "../../../assets/product/product (11).jpg";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import "./Featured.css";
 

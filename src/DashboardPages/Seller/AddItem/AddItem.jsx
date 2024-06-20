@@ -20,7 +20,7 @@ const AddItem = () => {
     const category = form.category.value;
     const sellerName = user.displayName;
     const rating = parseInt(form.rating.value);
-    const details = form.image.value;
+    const details = form.details.value;
     const available = parseInt(form.available.value);
 
     const newItem = {

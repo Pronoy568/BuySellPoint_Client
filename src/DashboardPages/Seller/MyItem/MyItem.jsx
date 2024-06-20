@@ -36,11 +36,11 @@ const MyItem = () => {
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
                         <img
-                          src={Item.img}
+                          src={Item.image}
                           alt="Avatar Tailwind CSS Component"
                         />
                       </div>
-                      <p>{Item.className}</p>
+                      <p>{Item.ProductName}</p>
                     </div>
                   </td>
                   <td>${Item.price}</td>
