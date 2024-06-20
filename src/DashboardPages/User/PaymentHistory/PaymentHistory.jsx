@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const PaymentHistory = () => {
   const [paymentHistory, setPaymentHistory] = useState([]);
@@ -25,7 +26,9 @@ const PaymentHistory = () => {
 
   return (
     <div className="w-11/12 mx-auto">
-      <h1 className="text-center font-bold text-4xl my-10">Payment History</h1>
+      <div>
+        <SectionTitle heading="Payment History"></SectionTitle>
+      </div>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}

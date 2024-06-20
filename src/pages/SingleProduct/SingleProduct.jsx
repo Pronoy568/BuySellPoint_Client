@@ -18,9 +18,9 @@ const SingleProduct = () => {
   } = ProductData;
 
   return (
-    <div className="pt-28 pb-10 w-10/12 mx-auto">
+    <div className="pt-20 pb-10 lg:pt-28 lg:pb-20 w-full lg:w-10/12 mx-auto">
       <div className="pb-10">
-        <h1 className="text-center text-5xl mb-5 italic font-semibold">
+        <h1 className="text-center text-4xl lg:text-5xl mb-5 italic font-semibold">
           <span className="text-gray-500 underline decoration-base-300 decoration-wavy underline-offset-8">
             Details Information of
           </span>{" "}
@@ -29,15 +29,15 @@ const SingleProduct = () => {
           </span>
         </h1>
       </div>
-      <div className="md:flex justify-center">
-        <div>
+      <div className="flex w-11/12 mx-auto flex-col md:flex-row items-center justify-center space-y-5 md:space-y-0 md:space-x-5">
+        <div className="md:w-1/2">
           <img
-            className="rounded-3xl w-full h-full"
+            className="rounded-3xl w-full h-80 md:h-auto"
             src={image}
             alt={ProductName}
           />
         </div>
-        <div className="text-2xl ms-0 md:ms-5 space-y-1 bg-gray-100 p-6 rounded-xl">
+        <div className="text-xl md:text-2xl space-y-2 bg-gray-100 p-6 rounded-xl w-full md:w-1/2">
           <h1>
             <span className="font-medium text-blue-900">ProductName:</span>{" "}
             <span className="text-gray-600">{ProductName}</span>
@@ -66,7 +66,7 @@ const SingleProduct = () => {
             <span className="font-medium text-blue-900">Available:</span>{" "}
             <span className="text-gray-600">{available}</span>
           </h1>
-          <h1 className="text-sm">
+          <div className="text-sm">
             <div className="tooltip tooltip-right" data-tip={rating}>
               <Rating
                 initialRating={rating}
@@ -79,11 +79,10 @@ const SingleProduct = () => {
                 }
               />
             </div>
-          </h1>
+          </div>
         </div>
       </div>
       <div className="mt-10 w-2/4 mx-auto">
-        {/* The button to open modal */}
         <label
           htmlFor="my-modal"
           className="btn btn-block btn-active btn-ghost"

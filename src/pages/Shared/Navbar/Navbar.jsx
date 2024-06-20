@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useAuth from "./../../../hooks/useAuth";
 import useAdmin from "../../../hooks/useAdmin";
 import useSeller from "../../../hooks/useSeller";
@@ -9,8 +9,8 @@ const NavBar = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {})
-      .then((error) => {
-        console.log(error);
+      .catch((error) => {
+        console.error("Logout error:", error);
       });
   };
 
@@ -20,16 +20,22 @@ const NavBar = () => {
   const navOptions = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <NavLink exact to="/" activeClassName="text-blue-500">
+          Home
+        </NavLink>
       </li>
       <li>
-        <Link to="/items">All Items</Link>
+        <NavLink to="/items" activeClassName="text-blue-500">
+          All Items
+        </NavLink>
       </li>
       <li>
-        <Link to="/order/Sports">Order Item</Link>
+        <NavLink to="/order/Sports" activeClassName="text-blue-500">
+          Order Item
+        </NavLink>
       </li>
       <li>
-        <Link
+        <NavLink
           to={
             isAdmin
               ? "/dashboard/adminHome"
@@ -37,13 +43,14 @@ const NavBar = () => {
               ? "/dashboard/sellerHome"
               : "/dashboard/userHome"
           }
+          activeClassName="text-blue-500"
         >
           Dashboard
-        </Link>
+        </NavLink>
       </li>
       {user?.email ? (
         <>
-          <Link
+          <NavLink
             to={
               isAdmin
                 ? "/dashboard/adminHome"
@@ -52,6 +59,7 @@ const NavBar = () => {
                 : "/dashboard/userHome"
             }
             className="mx-5"
+            activeClassName="text-blue-500"
           >
             {user?.photoURL ? (
               <>
@@ -80,7 +88,7 @@ const NavBar = () => {
                 </div>
               </>
             )}
-          </Link>
+          </NavLink>
 
           <li>
             <button onClick={handleLogOut} className="rounded">
@@ -91,7 +99,9 @@ const NavBar = () => {
       ) : (
         <>
           <li>
-            <Link to="/login">Login</Link>
+            <NavLink to="/login" activeClassName="text-blue-500">
+              Login
+            </NavLink>
           </li>
         </>
       )}
@@ -126,9 +136,9 @@ const NavBar = () => {
               {navOptions}
             </ul>
           </div>
-          <Link to="/" className="text-white text-xl">
+          <NavLink exact to="/" className="text-white text-xl">
             <img src="https://i.ibb.co/F5Fqj8Q/logo7.jpg" alt="logo" />
-          </Link>
+          </NavLink>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>

@@ -1,6 +1,7 @@
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const AddItem = () => {
   const { user } = useAuth();
@@ -58,7 +59,9 @@ const AddItem = () => {
 
   return (
     <div className="bg-[#f9f7f77f] px-14 py-8 text-center">
-      <h1 className="text-4xl font-bold">Add Item</h1>
+      <div className="-mt-8">
+        <SectionTitle heading="Add Item"></SectionTitle>
+      </div>
       <form onSubmit={handleAddItem}>
         {/* Form Item name and image */}
         <div className="md:flex mb-6">
@@ -140,15 +143,16 @@ const AddItem = () => {
             <label className="label">
               <span className="label-text">Category</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                placeholder="Category"
-                name="category"
-                className="input input-bordered w-full"
-                required
-              />
-            </label>
+            <select
+              name="category"
+              className="w-full p-3 border rounded-lg"
+              required
+            >
+              <option value="">-- Select Category --</option>
+              <option value="Sports">Sports</option>
+              <option value="Food">Food</option>
+              <option value="Electronics">Electronics</option>
+            </select>
           </div>
         </div>
         {/* Form Rating and details */}

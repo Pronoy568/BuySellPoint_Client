@@ -28,12 +28,17 @@ const Dashboard = () => {
         <div className="m-3">
           <label htmlFor="my-drawer-2" className="drawer-button lg:hidden">
             <FaArrowAltCircleLeft />
+            Open Drawer
           </label>
         </div>
         <Outlet></Outlet>
       </div>
       <div className="drawer-side bg-[#f0f0f0]">
-        <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+        <label
+          htmlFor="my-drawer-2"
+          aria-label="close sidebar"
+          className="drawer-overlay"
+        ></label>
         <ul className="menu p-4 w-80">
           {isAdmin ? (
             <>

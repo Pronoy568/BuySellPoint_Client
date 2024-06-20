@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import AllProductDataShow from "./AllProductDataShow";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 const AllProducts = () => {
   const [allProducts, setAllProducts] = useState([]);
@@ -39,10 +40,10 @@ const AllProducts = () => {
   };
 
   return (
-    <div className="py-5 w-10/12 mx-auto">
-      <h1 className="text-center text-5xl font-bold mb-10">
-        Here All Products
-      </h1>
+    <div className="pb-5 pt-20 md:pt-28 w-10/12 mx-auto">
+      <div>
+        <SectionTitle heading="Here All Products"></SectionTitle>
+      </div>
       {/* Search field */}
       <div className="text-center mb-5">
         <input

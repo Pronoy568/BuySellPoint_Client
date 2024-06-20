@@ -3,14 +3,16 @@ import image from "../../../assets/Banner/meal4.jpg";
 const Benefit = () => {
   return (
     <section className="pb-5">
-      <h1 className="text-center text-5xl font-bold pt-10 pb-2">
-        Benefits of Chef Cook
-      </h1>
-      <p className="text-center pb-5">
-        Chef is the star of the restaurant, so it can attract more customers,
-        <br /> if you are unsuccessful with choosing, your business might be
-        ruined.
-      </p>
+      <div className="container mx-auto px-4">
+        <h1 className="text-center text-4xl md:text-5xl font-bold pt-8 md:pt-10 pb-2 md:pb-4">
+          Benefits of Chef Cook
+        </h1>
+        <p className="text-center text-base md:text-lg pb-4 md:pb-5">
+          Chef is the star of the restaurant, so it can attract more customers,
+          <br className="hidden md:block" /> if you are unsuccessful with
+          choosing, your business might be ruined.
+        </p>
+      </div>
       <div className="flex items-center justify-center flex-col md:flex-row space-x-5 ">
         <div className="md:w-4/12 w-11/12">
           <h1 className="text-3xl font-bold pb-4">Importance of the Recipes</h1>

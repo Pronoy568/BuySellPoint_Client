@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useEffect } from "react";
-import { useState } from "react";
-import "./CheckoutForm.css";
+import { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -21,12 +19,9 @@ const CheckoutForm = ({ cart, price }) => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/dashboard/buyItem";
 
-  console.log(transactionId);
-
   useEffect(() => {
     if (price > 0) {
       axiosSecure.post("/create-payment-intent", { price }).then((res) => {
-        console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
       });
     }
@@ -50,7 +45,6 @@ const CheckoutForm = ({ cart, price }) => {
     });
 
     if (error) {
-      console.log("error", error);
       setCardError(error.message);
     } else {
       setCardError("");
@@ -70,14 +64,13 @@ const CheckoutForm = ({ cart, price }) => {
       });
 
     if (confirmError) {
-      console.log(confirmError);
+      setProcessing(false);
+      return;
     }
 
-    console.log("payment intent", paymentIntent);
-    setProcessing(false);
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
-      // save payment information to the server
+
       const payment = {
         email: user?.email,
         transactionId: paymentIntent.id,
@@ -89,32 +82,21 @@ const CheckoutForm = ({ cart, price }) => {
         status: "service pending",
         itemNames: cart.map((item) => item.ProductName),
       };
-      axiosSecure
-        .post("/payments", payment, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.result.insertedId) {
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Payment Successfully",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-            navigate(from, { replace: true });
-          }
-        })
-        .catch((error) => {
-          console.error(
-            "Payment request error: ",
-            error.response ? error.response.data : error.message
-          );
-        });
+
+      axiosSecure.post("/payments", payment).then((res) => {
+        if (res.data.result.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Payment Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate(from, { replace: true });
+        }
+      });
     }
+    setProcessing(false);
   };
 
   return (
@@ -135,10 +117,11 @@ const CheckoutForm = ({ cart, price }) => {
               },
             },
           }}
+          className="p-4 border border-gray-300 rounded shadow-sm mb-4"
         />
         <div className="text-center">
           <button
-            className="btn btn-primary btn-sm mt-4"
+            className="btn btn-primary btn-sm mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded disabled:opacity-50"
             type="submit"
             disabled={!stripe || !clientSecret || processing}
           >
@@ -147,6 +130,11 @@ const CheckoutForm = ({ cart, price }) => {
         </div>
       </form>
       {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
+      {transactionId && (
+        <p className="text-green-500">
+          Transaction complete with transactionId: {transactionId}
+        </p>
+      )}
     </>
   );
 };

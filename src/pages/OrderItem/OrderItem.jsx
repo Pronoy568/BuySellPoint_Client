@@ -4,6 +4,7 @@ import "react-tabs/style/react-tabs.css";
 import { useParams } from "react-router";
 import useProduct from "../../hooks/useProduct";
 import OrderTab from "./OrderTab";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 const OrderItem = () => {
   const categories = ["Sports", "Food", "Electronics"];
@@ -18,12 +19,15 @@ const OrderItem = () => {
 
   return (
     <div>
-      <div className="pt-28 text-center max-w-screen-xl mx-auto">
+      <div className="pt-20 md:pt-28 text-center max-w-screen-xl mx-auto">
+        <div>
+          <SectionTitle heading="Order Item"></SectionTitle>
+        </div>
         <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
             <Tab>Sports</Tab>
             <Tab>Food</Tab>
-            <Tab>Soup</Tab>
+            <Tab>Electronics</Tab>
           </TabList>
           <TabPanel>
             <OrderTab items={Sports}></OrderTab>
