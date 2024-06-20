@@ -1,7 +1,11 @@
+import useAuth from "../../../hooks/useAuth";
+import Profile from "../../../pages/Shared/Profile/Profile";
+
 const SellerHome = () => {
+  const { user } = useAuth();
   return (
     <div>
-      <h1>Seller Home</h1>
+      <Profile user={user}></Profile>
     </div>
   );
 };
