@@ -1,7 +1,11 @@
+import useAuth from "../../../hooks/useAuth";
+import Profile from "../../../pages/Shared/Profile/Profile";
+
 const AdminHome = () => {
+  const { user } = useAuth();
   return (
     <div>
-      <h1>Admin Home</h1>
+      <Profile user={user}></Profile>
     </div>
   );
 };

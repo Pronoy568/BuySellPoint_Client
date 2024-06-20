@@ -10,7 +10,6 @@ const useSeller = () => {
     enabled: !loading && !!user?.email,
     queryFn: async () => {
       const res = await axiosSecure.get(`/users/seller/${user?.email}`);
-      console.log(res);
       return res.data.seller;
     },
   });
