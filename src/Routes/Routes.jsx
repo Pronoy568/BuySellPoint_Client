@@ -23,6 +23,8 @@ import MyCart from "../DashboardPages/User/MyCart/MyCart";
 import BuyItem from "../DashboardPages/User/BuyItem/BuyItem";
 import PaymentHistory from "../DashboardPages/User/PaymentHistory/PaymentHistory";
 import CashOrCard from "../DashboardPages/User/PaymentHistory/CashOrCard";
+import CashPayment from "../DashboardPages/User/PaymentHistory/CashPayment";
+import Payment from "../DashboardPages/User/PaymentHistory/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -87,6 +89,22 @@ export const router = createBrowserRouter([
         element: (
           <UserRoute>
             <CashOrCard></CashOrCard>
+          </UserRoute>
+        ),
+      },
+      {
+        path: "cashPayment",
+        element: (
+          <UserRoute>
+            <CashPayment></CashPayment>
+          </UserRoute>
+        ),
+      },
+      {
+        path: "payment",
+        element: (
+          <UserRoute>
+            <Payment></Payment>
           </UserRoute>
         ),
       },

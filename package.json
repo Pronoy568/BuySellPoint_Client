@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
+    "@stripe/react-stripe-js": "^2.7.1",
+    "@stripe/stripe-js": "^3.5.0",
     "@tanstack/react-query": "^5.45.1",
     "aos": "^2.3.4",
     "axios": "^1.7.2",
@@ -23,6 +25,7 @@
     "react-rating": "^2.0.5",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.23.1",
+    "react-stripe-js": "^1.1.5",
     "react-tabs": "^6.0.2",
     "sweetalert2": "^11.12.0",
     "swiper": "^9.3.2"
