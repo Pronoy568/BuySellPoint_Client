@@ -19,6 +19,8 @@ const CheckoutForm = ({ cart, price }) => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/dashboard/buyItem";
 
+  console.log(transactionId);
+
   useEffect(() => {
     if (price > 0) {
       axiosSecure.post("/create-payment-intent", { price }).then((res) => {
@@ -130,11 +132,6 @@ const CheckoutForm = ({ cart, price }) => {
         </div>
       </form>
       {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
-      {transactionId && (
-        <p className="text-green-500">
-          Transaction complete with transactionId: {transactionId}
-        </p>
-      )}
     </>
   );
 };

@@ -15,7 +15,7 @@ const PaymentHistory = () => {
   const fetchPaymentHistory = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/payments?email=${user.email}`
+        `https://buy-sell-point-server.vercel.app/payments?email=${user.email}`
       );
       const data = response.data;
       setPaymentHistory(data);

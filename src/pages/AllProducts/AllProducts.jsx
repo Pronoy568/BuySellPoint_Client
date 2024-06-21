@@ -7,7 +7,7 @@ const AllProducts = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [messageRightProduct, setMessageRightProduct] = useState("");
 
-  const url = `http://localhost:5000/product`;
+  const url = `https://buy-sell-point-server.vercel.app/product`;
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())

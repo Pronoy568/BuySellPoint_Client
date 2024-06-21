@@ -8,7 +8,7 @@ const CategoryProduct = () => {
   const [foodCategory, setFoodCategory] = useState([]);
   const [electronicsCategory, setElectronicsCategory] = useState([]);
 
-  const url = `http://localhost:5000/product`;
+  const url = `https://buy-sell-point-server.vercel.app/product`;
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())

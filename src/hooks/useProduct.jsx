@@ -8,7 +8,9 @@ const useProduct = () => {
   } = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/product");
+      const res = await fetch(
+        "https://buy-sell-point-server.vercel.app/product"
+      );
       return res.json();
     },
   });

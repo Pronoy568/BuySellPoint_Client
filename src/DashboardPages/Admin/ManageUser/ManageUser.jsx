@@ -6,13 +6,13 @@ const ManageUser = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch("https://buy-sell-point-server.vercel.app/users");
       return res.json();
     },
   });
 
   const handleMakeSeller = (user) => {
-    fetch(`http://localhost:5000/users/seller/${user._id}`, {
+    fetch(`https://buy-sell-point-server.vercel.app/users/seller/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -31,7 +31,7 @@ const ManageUser = () => {
   };
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://buy-sell-point-server.vercel.app/users/admin/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

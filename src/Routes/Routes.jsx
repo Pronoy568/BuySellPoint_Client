@@ -44,7 +44,9 @@ export const router = createBrowserRouter([
         path: "/product/:id",
         element: <SingleProduct></SingleProduct>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/product/${params.id}`),
+          fetch(
+            `https://buy-sell-point-server.vercel.app/product/${params.id}`
+          ),
       },
       {
         path: "/order/:category",

@@ -36,7 +36,7 @@ const AddItem = () => {
       details,
     };
     // send data to the server
-    fetch("http://localhost:5000/product", {
+    fetch("https://buy-sell-point-server.vercel.app/product", {
       method: "POST",
       headers: {
         "content-type": "application/json",

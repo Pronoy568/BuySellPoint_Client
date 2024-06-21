@@ -62,6 +62,9 @@ const Login = () => {
         >
           <div className="card-body">
             <h1 className="text-3xl text-center font-bold">Login</h1>
+            <span>Admin: admin@gmail.com Pass: 123456</span>
+            <span>Seller: seller@gmail.com Pass: 123456</span>
+            <span>User: user@gmail.com Pass: 123456</span>
             <form onSubmit={handleSubmit(handleLogin)}>
               <div className="form-control">
                 <label className="label">

@@ -22,7 +22,7 @@ const OrderItem = ({ item }) => {
         price,
         email: user.email,
       };
-      fetch("http://localhost:5000/selectedProduct", {
+      fetch("https://buy-sell-point-server.vercel.app/selectedProduct", {
         method: "POST",
         headers: {
           "content-type": "application/json",
